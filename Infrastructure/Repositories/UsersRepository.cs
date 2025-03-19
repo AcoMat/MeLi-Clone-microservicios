@@ -4,17 +4,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MeLi_Clone_users_ms.Infrastructure.Repositories
 { 
-    public class UserRepository : IUserRepository
+    public class UsersRepository : IUsersRepository
     {
         private readonly UsersContext _context; 
         
-        public UserRepository(UsersContext context)
+        public UsersRepository(UsersContext context)
         {
             _context = context;
         }
         public async Task<User?> GetUserByEmail(string email)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);;
+            return await _context.Users.SingleOrDefaultAsync(u => u.Email == email);;
         }
 
         public async Task<User?> GetUserById(int id)
@@ -29,12 +29,11 @@ namespace MeLi_Clone_users_ms.Infrastructure.Repositories
             return user;
         }
 
-        public async Task<User?> UpdateUser(User user)
+        public async Task<User> UpdateUser(User user)
         {
             var existingUser = await _context.Users.FindAsync(user.Id);
             if (existingUser == null)
-                return null;
-            
+                throw new InvalidOperationException();
             
             _context.Entry(existingUser).CurrentValues.SetValues(user);
             await _context.SaveChangesAsync();

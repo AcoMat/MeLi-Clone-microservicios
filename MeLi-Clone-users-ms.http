@@ -1,6 +1,17 @@
-@MeLi_Clone_users_ms_HostAddress = http://localhost:5265
+@MeLi_Clone_users_ms_HostAddress = https://localhost:44301
 
-GET {{MeLi_Clone_users_ms_HostAddress}}/weatherforecast/
-Accept: application/json
+POST {{MeLi_Clone_users_ms_HostAddress}}/register
+Content-Type: application/json
 
+{
+  "name": "test24",
+  "lastName": "2",
+  "email": "etc@tes12412t.com",
+  "password": "123456",
+  "confirmPassword": "123456",
+  "imageUrl": "www.com"
+}
 ###
+
+GET {{MeLi_Clone_users_ms_HostAddress}}/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWF0aWFzIiwiZW1haWwiOiJhYUBhYS5jb20iLCJzaWQiOiIxMDI5IiwiZXhwIjoxNzQyMzk5NjEyLCJpc3MiOiJNZUxpLUNsb25lIiwiYXVkIjoiTWVMaS1DbG9uZS1Vc2VycyJ9.NaldXlswSHhZAuQDpNs0UnN1tmxZLQuk1zsmdD8zTOc

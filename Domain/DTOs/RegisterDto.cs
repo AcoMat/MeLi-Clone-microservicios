@@ -2,7 +2,7 @@
 
 namespace MeLi_Clone_users_ms.Domain.DTOs
 {
-    public record RegisterDTO
+    public record RegisterDto
     {
         [Required]
         public required string Name { get; set; }
