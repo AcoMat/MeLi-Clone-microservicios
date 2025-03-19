@@ -63,5 +63,6 @@ Configura la cadena de conexión a la base de datos en el archivo `appsettings.j
 
 ### Diagrama inicial
 
-![diagram](https://github.com/user-attachments/assets/585512e3-e0db-47f2-895a-2d98855fef29)
+![diagrama](https://github.com/user-attachments/assets/57a748df-b641-4b7a-a437-d5744d0304da)
+
 
