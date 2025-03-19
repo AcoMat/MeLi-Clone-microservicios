@@ -51,6 +51,7 @@ Configura la cadena de conexión a la base de datos en el archivo `appsettings.j
    ```
 
 ## Uso de la API
+
 ### EndPoints
 
 - POST /register: Registra un nuevo usuario.
@@ -60,5 +61,7 @@ Configura la cadena de conexión a la base de datos en el archivo `appsettings.j
 - PUT /users/me/like: Añade o elimina un producto de los favoritos del usuario autenticado.
 - PUT /users/me/purchases: Añade una compra al historial del usuario autenticado (no implementado).
 
-![image](https://github.com/user-attachments/assets/f280fc1d-53ea-4dc6-a759-577ef8f432e7)
+### Diagrama inicial
+
+![diagram](https://github.com/user-attachments/assets/585512e3-e0db-47f2-895a-2d98855fef29)
 
