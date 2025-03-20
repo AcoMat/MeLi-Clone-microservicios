@@ -9,19 +9,19 @@ namespace MeLi_Clone_users_ms.Domain.Models
         public int Id { get; set; }
 
         [Required,MaxLength(20)]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [Required, MaxLength(20)]
-        public string LastName { get; set; }
+        public required string LastName { get; set; }
 
         [Required, EmailAddress]
-        public string Email { get; set; }
+        public required string Email { get; set; }
 
         [Required] 
-        public string PasswordHash { get; set; }
+        public required string PasswordHash { get; set; }
 
         [Required]
-        public string ImageURL { get; set; }
+        public required string ImageURL { get; set; }
 
         public List<int> FavoriteProducts { get; set; } = [];
         public List<Purchase> PurchaseHistory { get; set; } = [];

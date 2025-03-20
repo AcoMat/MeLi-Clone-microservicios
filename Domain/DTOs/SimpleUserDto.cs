@@ -6,11 +6,11 @@ namespace MeLi_Clone_users_ms.Domain.DTOs;
 public class SimpleUserDto
 {
     [Required]
-    public string Name { get; set; }
+    public required string Name { get; set; }
     [Required]
-    public string LastName { get; set; }
+    public required string LastName { get; set; }
     [Required]
-    public string Email { get; set; }
+    public required string Email { get; set; }
     [Required]
-    public string ImageURL { get; set; }
+    public required string ImageUrl { get; set; }
 }

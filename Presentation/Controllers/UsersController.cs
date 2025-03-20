@@ -1,7 +1,6 @@
 using System.Text.Json;
 using MeLi_Clone_users_ms.Application.Interfaces;
 using MeLi_Clone_users_ms.Domain.DTOs;
-using MeLi_Clone_users_ms.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeLi_Clone_users_ms.Application.Controllers;
@@ -44,7 +43,7 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> GetUserData()
     {
         Request.Headers.TryGetValue("Authorization", out var token);
-        _tokenService.ValidateToken(token!);
+        _tokenService.ValidateToken(token);
         var userId = _tokenService.GetUserIdFromToken(token!);
         var user = await _usersService.GetUser(userId);
         return Ok(JsonSerializer.Serialize(new UserDto(user)));
@@ -60,7 +59,7 @@ public class UsersController : ControllerBase
             Name = user.Name,
             LastName = user.LastName,
             Email = user.Email,
-            ImageURL = user.ImageURL
+            ImageUrl = user.ImageURL
         });
     }
     
@@ -69,7 +68,7 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> LikeProduct([FromBody] LikeDto likeDto)
     {
         Request.Headers.TryGetValue("Authorization", out var token);
-        _tokenService.ValidateToken(token!);
+        _tokenService.ValidateToken(token);
         var userId = _tokenService.GetUserIdFromToken(token!);
         var user = await _usersService.AddLikedProduct(userId,likeDto.ProductId);
         return Ok(JsonSerializer.Serialize(new UserDto(user)));
