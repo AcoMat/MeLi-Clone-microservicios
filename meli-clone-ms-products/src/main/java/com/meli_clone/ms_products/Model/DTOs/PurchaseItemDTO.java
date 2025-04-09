@@ -1,34 +1,27 @@
 package com.meli_clone.ms_products.Model.DTOs;
 
-import java.math.BigDecimal;
 
 public class PurchaseItemDTO {
 
     private Long productId;
-    private BigDecimal priceAtPurchase;
+    private Double price;
     private int quantity;
+
+    public PurchaseItemDTO(Long productId, Double price, int quantity) {
+        this.productId = productId;
+        this.price = price;
+        this.quantity = quantity;
+    }
 
     public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public BigDecimal getPriceAtPurchase() {
-        return priceAtPurchase;
-    }
-
-    public void setPriceAtPurchase(BigDecimal priceAtPurchase) {
-        this.priceAtPurchase = priceAtPurchase;
+    public Double getPrice() {
+        return price;
     }
 
     public int getQuantity() {
         return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 }

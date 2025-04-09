@@ -1,46 +1,41 @@
 package com.meli_clone.ms_products.Model.DTOs;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.List;
 
 public class PurchaseDTO {
 
     private Long purchaseId;
-    private LocalDateTime purchaseDate;
-    private BigDecimal totalAmount;
+    private Instant purchaseDate;
+    private int quantity;
     private List<PurchaseItemDTO> items;
+    private Double totalPrice;
 
+    public PurchaseDTO(Long purchaseId, Instant purchaseDate, int quantity, List<PurchaseItemDTO> items, Double totalPrice) {
+        this.purchaseId = purchaseId;
+        this.purchaseDate = purchaseDate;
+        this.quantity = quantity;
+        this.items = items;
+        this.totalPrice = totalPrice;
+    }
 
     public Long getPurchaseId() {
         return purchaseId;
     }
 
-    public void setPurchaseId(Long purchaseId) {
-        this.purchaseId = purchaseId;
-    }
-
-    public LocalDateTime getPurchaseDate() {
+    public Instant getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(LocalDateTime purchaseDate) {
-        this.purchaseDate = purchaseDate;
-    }
-
-    public BigDecimal getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(BigDecimal totalAmount) {
-        this.totalAmount = totalAmount;
+    public int getQuantity() {
+        return quantity;
     }
 
     public List<PurchaseItemDTO> getItems() {
         return items;
     }
 
-    public void setItems(List<PurchaseItemDTO> items) {
-        this.items = items;
+    public Double getTotalPrice() {
+        return totalPrice;
     }
 }
