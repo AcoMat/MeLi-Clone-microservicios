@@ -1,11 +1,12 @@
 package com.meli_clone.ms_products.Model.Entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 
+@Getter
 @Entity
 public class Purchase{
     @Id
@@ -23,36 +24,15 @@ public class Purchase{
 
     private Double totalPrice;
 
+    public Purchase() {
+    }
 
     public Purchase(Long userId, Instant purchaseDate, int quantity, List<PurchaseItem> items, Double totalPrice) {
         this.userId = userId;
         this.purchaseDate = purchaseDate;
         this.quantity = quantity;
-        this.items = items;
+        this.items = items.stream().peek(item -> item.setPurchase(this)).toList();
         this.totalPrice = totalPrice;
     }
 
-    public Long getPurchaseId() {
-        return purchaseId;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public Instant getPurchaseDate() {
-        return purchaseDate;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public List<PurchaseItem> getItems() {
-        return items;
-    }
-
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
 }

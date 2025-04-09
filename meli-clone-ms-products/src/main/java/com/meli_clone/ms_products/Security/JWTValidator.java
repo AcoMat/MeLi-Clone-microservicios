@@ -5,24 +5,47 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 
+@Slf4j
 @Component
 public class JWTValidator {
 
-    private static final String SECRET_KEY = "SUPER_SECRET_KEY_MELI_CLONE_DONT_GONNA_GIVE_YOU_UP";
-    private static final String SID_CLAIM = "SID";
-
+    private final String jwtSecret;
     private final JWTVerifier verifier;
 
-    public JWTValidator() {
-        Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
+    public JWTValidator(@Value("${app.jwt.secret}") String jwtSecret) {
+        this.jwtSecret = jwtSecret;
+        Algorithm algorithm = Algorithm.HMAC256(jwtSecret);
         this.verifier = JWT.require(algorithm).build();
     }
 
     public Long validateTokenAndGetSID(String token) {
-        DecodedJWT decodedJWT = verifier.verify(token);
-        return decodedJWT.getClaim(SID_CLAIM).asLong();
+        try {
+            if (token == null || token.isEmpty()) {
+                throw new IllegalArgumentException("Token is null or empty");
+            }
+
+            if (token.startsWith("Bearer ")) {
+                token = token.substring(7);
+            }
+
+            DecodedJWT decodedJWT = verifier.verify(token);
+
+            String sidString = decodedJWT.getClaim("sid").asString();
+            if (sidString != null) {
+                return Long.parseLong(sidString);
+            }
+
+            // If String approach fails, try direct asLong()
+            return decodedJWT.getClaim("sid").asLong();
+        } catch (JWTVerificationException e) {
+            throw new IllegalArgumentException("Invalid JWT token", e);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid sid format in token", e);
+        }
     }
 }

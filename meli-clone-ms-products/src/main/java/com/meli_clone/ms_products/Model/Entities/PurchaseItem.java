@@ -1,7 +1,10 @@
 package com.meli_clone.ms_products.Model.Entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
 @Entity
 public class PurchaseItem  {
     @Id
@@ -10,9 +13,13 @@ public class PurchaseItem  {
     private Long productId;
     private Double priceAtPurchase;
     private int quantity;
+    @Setter
     @ManyToOne
     @JoinColumn(name = "purchase_id")
     private Purchase purchase;
+
+    public PurchaseItem() {
+    }
 
     public PurchaseItem(Long productId, Double priceAtPurchase, int quantity) {
         this.productId = productId;
@@ -20,23 +27,4 @@ public class PurchaseItem  {
         this.quantity = quantity;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public Double getPriceAtPurchase() {
-        return priceAtPurchase;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public Purchase getPurchase() {
-        return purchase;
-    }
 }

@@ -1,6 +1,5 @@
 package com.meli_clone.ms_products.Mappers;
 
-import com.meli_clone.ms_products.Model.DTOs.NewPurchaseDTO;
 import com.meli_clone.ms_products.Model.DTOs.PurchaseDTO;
 import com.meli_clone.ms_products.Model.DTOs.PurchaseItemDTO;
 import com.meli_clone.ms_products.Model.Entities.Purchase;
