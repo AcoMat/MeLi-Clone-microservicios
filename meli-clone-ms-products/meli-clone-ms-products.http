@@ -1,0 +1,6 @@
+@meli_clone_ms_products_HostAddress = http://localhost:5250
+
+GET {{meli_clone_ms_products_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
