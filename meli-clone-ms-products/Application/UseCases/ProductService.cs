@@ -12,25 +12,10 @@ public class ProductService
     {
         _repository = repository;
     }
-
-    public async Task<IEnumerable<ProductDto>> GetAllAsync()
+    
+    public async Task<Product?> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
-        /*
-        var products = await _repository.GetAllAsync();
-        return products.Select(p => new ProductDto(p.Id, p.Name, p.Price, p.Stock));
-        */
-        throw new NotImplementedException();
-    }
-
-    public async Task<ProductDto?> GetByIdAsync(string id)
-    {
-        /*
-        var p = await _repository.GetByIdAsync(id);
-        return p is null ? null : new ProductDto(p.Id, p.Name, p.Price, p.Stock);
-    */
-    throw new NotImplementedException();
+        return await _repository.GetByIdAsync(id, cancellationToken);
     }
     
-
-    public async Task DeleteAsync(string id) => await _repository.DeleteAsync(id);
 }
