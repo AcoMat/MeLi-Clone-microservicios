@@ -1,6 +1,8 @@
+using meli_clone_ms_products.Application.Interfaces;
 using meli_clone_ms_products.Application.UseCases;
 using meli_clone_ms_products.Domain.Interfaces.Repositories;
 using meli_clone_ms_products.Infrastructure.Data;
+using meli_clone_ms_products.Infrastructure.External;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

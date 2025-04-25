@@ -7,6 +7,7 @@ namespace meli_clone_ms_products.Domain.Entities;
 public class Review
 {
     [Required]
+    [Key]
     public int Id { get; set; }
     [Required]
     public string UserId { get; set; }

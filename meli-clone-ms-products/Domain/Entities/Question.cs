@@ -16,4 +16,6 @@ public class Question
     public string QuestionText { get; set; }
     [MaxLength(1000)]
     public string? responseText { get; set; }
+    public DateTime CreatedAt { get; set; } 
+    public DateTime? AnsweredAt { get; set; }
 }

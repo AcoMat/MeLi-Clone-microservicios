@@ -2,12 +2,10 @@
 
 public record ProductDto(
     string Id,
-    string CategoryId,
-    CategoryDto? Category,
+    CategoryDto Category,
     string Name,
     List<string> Pictures,
     string SellerName,
-    string SellerId,
     decimal Price,
     Dictionary<string, string> Attributes,
     int Stock,
@@ -18,22 +16,19 @@ public record ProductDto(
 
 // DTOs for related entities
 public record CategoryDto(
-    string Id,
     string Name
 );
 
 public record QuestionDto(
-    string Id,
-    string Question,
-    string Answer,
     string UserId,
+    string Question,
+    string? Answer,
     DateTime CreatedAt,
     DateTime? AnsweredAt
 );
 
 public record ReviewDto(
-    string Id,
-    string UserId,
+    string UserName,
     string Comment,
     int Rating,
     DateTime CreatedAt
