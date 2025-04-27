@@ -16,7 +16,6 @@ public class Product
     [MinLength(1, ErrorMessage = "At least one picture is required.")]
     public required List<string> Pictures { get; set; }
     
-    
     public required String SellerId { get; set; }
 
     [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than zero.")]
